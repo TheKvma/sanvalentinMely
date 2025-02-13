@@ -70,26 +70,22 @@
             position: relative;
             width: 250px;
             height: 200px;
-            background: #000000;
             cursor: pointer;
-            border-radius: 10px;
             text-align: center;
             display: flex;
             justify-content: center;
             align-items: center;
-        }
-        .envelope::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 50%;
-            background: #8a2be2;
-            clip-path: polygon(0 0, 100% 0, 50% 100%);
+            animation: shake 1s infinite alternate;
         }
         .envelope img {
-            width: 70px;
+            width: 250px;
+        }
+        @keyframes shake {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(3deg); }
+            50% { transform: rotate(-3deg); }
+            75% { transform: rotate(3deg); }
+            100% { transform: rotate(0deg); }
         }
         .buttons-container {
             display: flex;
@@ -100,20 +96,11 @@
         .no-btn {
             transition: all 0.3s ease;
         }
-        .fireworks {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-            display: none;
-        }
     </style>
 </head>
 <body>
     <div class="envelope" onclick="openEnvelope()" id="envelope">
-        <img src="https://i.imgur.com/Kuromi.png" alt="Kuromi" class="kuromi-img">
+        <img src="https://static.vecteezy.com/system/resources/previews/028/078/412/non_2x/pink-love-letter-envelope-free-png.png" alt="Sobre">
     </div>
     <div class="container" id="proposal">
         <h1 class="title">¿Quieres ser mi San Valentín?</h1>
@@ -123,9 +110,6 @@
         </div>
         <p id="message" style="display:none; font-size: 20px; margin-top: 10px;">¡Me haces la persona más feliz del mundo! 💖</p>
     </div>
-    <div class="fireworks" id="fireworks">
-        <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" width="100%" height="100%">
-    </div>
     
     <script>
         function openEnvelope() {
@@ -134,10 +118,6 @@
         }
         function showMessage() {
             document.getElementById('message').style.display = 'block';
-            document.getElementById('fireworks').style.display = 'block';
-            setTimeout(() => {
-                document.getElementById('fireworks').style.display = 'none';
-            }, 3000);
         }
         function moveButton() {
             let btn = document.getElementById('no-btn');
