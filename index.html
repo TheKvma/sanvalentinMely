@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para mi San Valentín</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+        
+        body {
+            background: url('https://i.imgur.com/63cgpS4.png') no-repeat center center fixed;
+            background-size: cover;
+            text-align: center;
+            font-family: 'Great Vibes', cursive;
+            color: #a000a0;
+            padding: 50px;
+        }
+        .container {
+            background: #000000;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            display: inline-block;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: opacity 1s ease, transform 1s ease;
+            border: 2px solid #a000a0;
+        }
+        .container.show {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .title {
+            font-size: 24px;
+            color: #d4a1ff;
+        }
+        .btn {
+            background: #8a2be2;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+        .btn:hover {
+            background: #6a1bb5;
+        }
+        .yes-btn {
+            animation: rgbGlow 2s infinite alternate;
+        }
+        @keyframes rgbGlow {
+            0% { background: #ff0000; }
+            25% { background: #ff00ff; }
+            50% { background: #0000ff; }
+            75% { background: #00ffff; }
+            100% { background: #00ff00; }
+        }
+        #message {
+            color: #ffb6ff;
+        }
+        .envelope {
+            position: relative;
+            width: 200px;
+            height: 150px;
+            background: #000000;
+            margin: auto;
+            cursor: pointer;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .envelope::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: #8a2be2;
+            clip-path: polygon(0 0, 100% 0, 50% 100%);
+        }
+        .envelope img {
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+        }
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .no-btn {
+            transition: all 0.3s ease;
+        }
+        .fireworks {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="envelope" onclick="openEnvelope()" id="envelope">
+        <img src="https://i.imgur.com/Kuromi.png" alt="Kuromi" class="kuromi-img">
+    </div>
+    <div class="container" id="proposal">
+        <h1 class="title">¿Quieres ser mi San Valentín?</h1>
+        <div class="buttons-container">
+            <button class="btn yes-btn" onclick="showMessage()">Sí, quiero!</button>
+            <button class="btn no-btn" id="no-btn" onmouseover="moveButton()">No quiero :(</button>
+        </div>
+        <p id="message" style="display:none; font-size: 20px; margin-top: 10px;">¡Me haces la persona más feliz del mundo! 💖</p>
+    </div>
+    <div class="fireworks" id="fireworks">
+        <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" width="100%" height="100%">
+    </div>
+    
+    <script>
+        function openEnvelope() {
+            document.getElementById('proposal').classList.add('show');
+            document.getElementById('envelope').style.display = 'none';
+        }
+        function showMessage() {
+            document.getElementById('message').style.display = 'block';
+            document.getElementById('fireworks').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('fireworks').style.display = 'none';
+            }, 3000);
+        }
+        function moveButton() {
+            let btn = document.getElementById('no-btn');
+            let x = Math.random() * (window.innerWidth - 100);
+            let y = Math.random() * (window.innerHeight - 100);
+            btn.style.position = 'absolute';
+            btn.style.left = x + 'px';
+            btn.style.top = y + 'px';
+        }
+    </script>
+</body>
+</html>
