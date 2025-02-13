@@ -13,25 +13,31 @@
             text-align: center;
             font-family: 'Great Vibes', cursive;
             color: #a000a0;
-            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
         }
         .container {
             background: #000000;
             padding: 20px;
             border-radius: 15px;
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-            display: inline-block;
             opacity: 0;
             transform: scale(0.8);
             transition: opacity 1s ease, transform 1s ease;
             border: 2px solid #a000a0;
+            max-width: 400px;
+            text-align: center;
         }
         .container.show {
             opacity: 1;
             transform: scale(1);
         }
         .title {
-            font-size: 24px;
+            font-size: 32px;
             color: #d4a1ff;
         }
         .btn {
@@ -62,13 +68,15 @@
         }
         .envelope {
             position: relative;
-            width: 200px;
-            height: 150px;
+            width: 250px;
+            height: 200px;
             background: #000000;
-            margin: auto;
             cursor: pointer;
             border-radius: 10px;
             text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         .envelope::before {
             content: '';
@@ -81,11 +89,7 @@
             clip-path: polygon(0 0, 100% 0, 50% 100%);
         }
         .envelope img {
-            position: absolute;
-            top: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 50px;
+            width: 70px;
         }
         .buttons-container {
             display: flex;
